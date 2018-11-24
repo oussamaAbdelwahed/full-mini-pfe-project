@@ -1,0 +1,106 @@
+<!-- Modal -->
+<!-- Trigger the modal with a button -->
+<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#mydd">Open Modal</button>-->
+<!-- Modal -->
+<div id="my_delete_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content" id="modal_delete_content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Avertissement ! </h4>
+      </div>
+      <div class="modal-body">
+        <p>voulez-vous vraiment supprimer ce materiel : Oui/Non!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="onDeleteFromModal()" class="btn btn-danger" data-dismiss="modal">Oui</button>
+        <button type="button" (click)="onIgnoreDelete()" class="btn btn-default" data-dismiss="modal">Non</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal -->
+
+<div class="wrapper">
+  <div class="sidebar" data-background-color="white" data-active-color="danger">
+    <sidebar-cmp></sidebar-cmp>
+  </div>
+  <div class="main-panel">
+    <navbar-cmp></navbar-cmp>
+    <div class="container">
+<h4 class="heading text-center" style="color:black;">{{viewTitle}}</h4>
+      <div class="row">
+        <div class="col-xs-12">
+            <div class="row" style="padding-top:0px">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 text-center">
+                <div class="list-group list-group-horizontal pull-right">
+                <img id="loading_spinner" style="display: none;margin-right:5px;" height="35" width="35" src="assets/img/loading_spinner.svg"/>
+
+                  <select (click)="(getDepartements())" (change)="onChangeDep($event)" id="dep_sel_dom_el"  class="list-group-item">
+                     <option value="0" selected>departement</option>
+                     <option *ngFor="let dep of departements" [value]="dep.id">{{dep.nom}}</option>
+                  </select>
+                  <select (click)="getClassroomsOfDep()" (change)="onChangeClass($event)" id="class_sel_dom_el"  class="list-group-item">
+                     <option value="0" selected>classe</option>
+                     <option *ngFor="let class of classes" [value]="class.id">{{class.nom}}</option>
+                  </select>
+                  <select (change)="onChangeCate($event)" id="mat-cat_sel_dom_el"  class="list-group-item">
+                    <option value="ALL" selected>Tous les categories</option>  
+                    <option value="PC" >PC</option>  
+                    <option value="EQUIPEMENT_RESAU">EQUIPEMENT_RESAU</option>
+                    <option value="RETRO_PROJECTEUR">RETROPROJECTEUR</option>
+                  </select>
+                  <button (click)="onSearch()" style="border-radius: 0px;margin-left:10px;" class="btn btn-default">Chercher</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <!--begin card-->
+<div style="margin-top: 30px;" *ngFor="let mat of materials" id="elem_mat_{{mat.id}}"  class="card col-lg-4 col-xs-offset-1 col-xs-10 col-xs-offset-1">
+          <div class="card-body">
+            <h5 class="card-title text-center">{{ mat.nom}} ( {{mat.marque}} )</h5>
+            <p class="card-text">description : </p>
+            <table class="table table-bordered table-stripped table-condensed">
+              <tr>
+                <td><strong>marque</strong></td>
+                <td>{{mat.marque}}</td>
+              </tr>
+              <tr>
+                <td><strong>nom</strong></td>
+                <td>{{mat.nom}}</td>
+              </tr>
+              <tr>
+                <td><strong>numSerie</strong></td>
+                <td>{{mat.numSerie}}</td>
+              </tr>
+              <tr>
+                <td><strong>categorie</strong></td>
+                <td>{{mat.categorie}}</td>
+              </tr>
+              <tr>
+                <td><strong>adresse ip</strong></td>
+                <td>{{mat.adresseIp}}</td>
+              </tr>
+              <tr>
+                <td><strong>date d'achat</strong></td>
+                <td>{{mat.dateAchat}}</td>
+              </tr>
+              <tr>
+                <td><strong>classe</strong></td>
+                <td>{{mat.classe?.nom}}</td>
+              </tr>
+            </table>
+            <button id="btnsupp_{{mat.id}}" (click)="onDeleteMat($event)"  style="margin-bottom:10px;" class="pull-right btn btn-danger">supprimer</button>
+            <a style="margin-bottom:10px;" class="pull-right btn btn-warning" [routerLink]="['/admin/materials/'+mat.id+'/edit']">modifier</a>
+          </div>
+        </div>
+       <!-- end card-->
+    </div>
+
+  </div>
+</div>
+
+

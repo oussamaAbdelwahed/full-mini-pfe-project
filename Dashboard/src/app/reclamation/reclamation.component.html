@@ -1,0 +1,57 @@
+
+
+  <div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+        <sidebar-cmp></sidebar-cmp>
+    </div>
+    <div class="main-panel">
+        <navbar-cmp></navbar-cmp>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Liste des réclamations</h4>  
+                            </div>
+                            <div>
+                                
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Titre</th>
+                                            <th>Description de la réclamation</th>
+                                            <th>Expéditeur</th>
+                                            <th>Salle</th>
+                                            <th>Date de réclamation</th>
+                                            <th>Affecter un technicien</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let row of reclamations">
+                                            <td>{{row.title}}</td>
+                                            <td>{{row.description}}</td>
+                                            <td>{{row.expediteur}}</td>
+                                            <td>{{row.salle}}</td>
+                                            <td>{{row.date_de_reclamation}}</td>
+                                            <td>
+                                              <!-- Modal with be displayed -->
+                                              <button class="btn btn-info" (click)="openModal()">Affecter</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+              
+                            </div>
+                        </div>
+                    </div>
+              
+                </div>
+              </div>
+        </div>
+        <footer-cmp></footer-cmp>
+    </div>
+  </div>
+  

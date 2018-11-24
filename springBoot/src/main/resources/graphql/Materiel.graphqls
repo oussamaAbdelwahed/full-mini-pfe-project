@@ -1,0 +1,35 @@
+schema {
+    query:Query
+}
+
+
+type Query {
+    AllMaterielsByChefDepart(chefDepartId: Long): [Materiel]
+    getMaterialsByDepartement(departementId: ID!): [Materiel]!
+    getMaterialsByClassroom(classroomId: ID!): [Materiel]!
+    getMaterialById(matId:ID!): Materiel!
+    getMaterialsByCategorie(categ: String!): [Materiel!]!
+    getMaterialsByDepartementAndCategorie(depId: ID!, categ: String!): [Materiel!]!
+    getMaterialsByClasseAndCategorie(classId: ID!, categ: String!): [Materiel!]!
+    getAllMaterials: [Materiel!]!
+    deleteMateriel(matId: ID!): Boolean!
+}
+
+type Materiel  {
+    id: Long
+    nom: String
+    marque: String
+    numSerie: String
+    categorie: String
+    adresseIp: String
+    dateAchat: String
+    classe: Classe
+    reclamations: [Reclamation]
+}
+
+
+
+
+
+
+

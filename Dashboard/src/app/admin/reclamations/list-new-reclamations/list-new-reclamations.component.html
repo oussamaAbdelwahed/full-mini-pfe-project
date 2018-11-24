@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="sidebar" data-background-color="white" data-active-color="danger">
+    <sidebar-cmp></sidebar-cmp>
+  </div>
+  <div class="main-panel">
+    <navbar-cmp></navbar-cmp>
+    <div class="container">
+       <h3 class="text-center" style="margin-bottom:30px;">Liste Nouvelles Reclamations</h3>
+         <!--begin card-->
+         <div style="margin-top: 30px;" *ngFor="let rec of reclamations"   class="card col-lg-4 col-xs-offset-1 col-xs-10 col-xs-offset-1">
+          <div class="card-body">
+            <h5 class="card-title text-center" style="margin-top:15px;">{{rec?.objectif}}</h5>
+            <p class="card-text">informations : </p>
+            <table class="table table-bordered table-stripped table-condensed">
+             <tr>
+                <td><strong>passé le :</strong></td>
+                <td>{{rec.dateCreation}}</td>
+              </tr>
+              <tr>
+                <td><strong>passé par :</strong></td>
+                <td>{{rec.chefDepartement.nom}} {{rec.chefDepartement.prenom}}</td>
+              </tr>
+              <tr>
+                <td><strong>sur le matériel : </strong></td>
+                <td>{{rec.materiel.nom}} ({{rec.materiel?.marque}})</td>
+              </tr>
+              <tr>
+                <td><strong>description panne</strong></td>
+                <td>{{rec.description}}</td>
+              </tr>
+            </table>
+            <a style="margin-bottom:10px;" class="col-xs-offset-2 col-xs-8 col-xs-offset-2 btn btn-success" [routerLink]="['/admin/materials/reclamations/'+rec.id+'/affecter-technicien']">affecter
+  un technicien</a>
+          </div>
+        </div>
+       <!-- end card-->
+    </div>
+  </div>
+</div>

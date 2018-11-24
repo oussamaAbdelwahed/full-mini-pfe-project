@@ -1,0 +1,12 @@
+type Departement{
+    id: Long!
+    nom: String!
+    chef: ChefDepartement!
+    classes: [Classe]!
+}
+
+extend type Query {
+ getAllDepartements: [Departement]!
+ getDepartementById(id: ID!): Departement!
+}
+

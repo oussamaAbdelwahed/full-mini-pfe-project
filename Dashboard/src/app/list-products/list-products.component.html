@@ -1,0 +1,56 @@
+
+
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+        <sidebar-cmp></sidebar-cmp>
+    </div>
+    <div class="main-panel">
+        <navbar-cmp></navbar-cmp>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Liste des materiels informatiques</h4>
+                                <br>
+                            </div>
+                            <div>
+                                
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom de materiel</th>
+                                            <th>Marque</th>
+                                            <th>Catégorie</th>
+                                            <th>Numero de serie</th>
+                                            <th>Adresse IP</th>
+                                            <th>Date de l'achat</th>
+                                            <th>Classe</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let row of listProducts">
+                                            <td>{{row.nom}}</td>
+                                            <td>{{row.marque}}</td>
+                                            <td>{{row.categorie}}</td>
+                                            <td>{{row.numSerie}}</td>
+                                            <td>{{row.adresseIp}}</td>
+                                            <td>{{row.dateAchat}}</td>
+                                            <td>{{row.classe.nom}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+              
+                            </div>
+                        </div>
+                    </div>
+              
+                </div>
+              </div>
+        </div>
+        <footer-cmp></footer-cmp>
+    </div>
+  </div>

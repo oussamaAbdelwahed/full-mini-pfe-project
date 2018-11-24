@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+ .sidebar .nav li.active > a:after{
+    border-right: 0!important;
+    border-top: 0!important;
+    border-bottom: 0!important;
+    content: none!important;
+    display: none!important;
+    position: absolute;
+} 
+
+
+.sidebar-wrapper {
+    width: 274px!important
+}
+.successMessage {
+    background: #00b894!important;
+    color: white
+}
+
+.erreurMessage {
+    background: #d63031!important;
+    color: white
+}

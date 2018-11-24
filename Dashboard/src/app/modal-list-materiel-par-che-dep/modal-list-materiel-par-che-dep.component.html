@@ -1,0 +1,43 @@
+<div class="">
+    <div class="header">
+        <h4 class="title">Liste des materiels</h4>
+    </div>
+    <div class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <select class="form-control" (change)="loadMaterielFromClasseId($event.target.value)">
+                            <option>Selectioner la classe</option>
+                            <option 
+                            *ngFor="let classe of Classes;" 
+                            value="{{classe.id}}">
+                                {{ classe.nom }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" *ngIf="showSelectMaterielUI==true">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <select class="form-control" (change)="PrepareData($event.target.value)">
+                            <option>Selectioner le materiel</option>
+                            <option 
+                            *ngFor="let materiel of materiels;" 
+                            value="{{materiel.id}}">
+                                {{ materiel.nom }} | {{ materiel.numSerie }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <button class="btn btn-success" id="successModalBtn" mat-dialog-close (click)="sendBackData()">Ok...</button>
+                    <button class="btn btn-info" mat-dialog-close>Annuler</button>
+                </div>
+            </div>
+    </div>
+</div>

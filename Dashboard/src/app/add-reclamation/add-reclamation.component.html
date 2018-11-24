@@ -1,0 +1,99 @@
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+        <sidebar-cmp></sidebar-cmp>
+    </div>
+    <div class="main-panel">
+        <navbar-cmp></navbar-cmp>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="card">
+                            <div class="header text-center">
+                                <h3 class="title">Ajouter une reclamation</h3>
+                            </div>
+                            <div class="content">
+                                <form [formGroup]="AddRecalamationForm" (ngSubmit)="postReclamation()">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label>Objectif </label>
+                                                <input type="text" 
+                                                class="form-control border-input"  
+                                                placeholder="Quelle est l'Objectif de cette reclamation...?"
+                                                name="objectif"
+                                                formControlName="objectif">
+                                                <div *ngIf="AddRecalamationForm.controls['objectif'].touched 
+                                                && !AddRecalamationForm.controls['objectif'].valid">
+                                                  <span class="text-danger">Le champs objectif est obligatoire</span>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+  
+  
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea type="text" 
+                                                rows="5" class="form-control border-input"
+                                                placeholder="Saisir la description de cette reclamation"
+                                                name="description"
+                                                formControlName="description"></textarea>
+                                                <div *ngIf="AddRecalamationForm.controls['description'].touched">
+                                                  <span class="text-danger" *ngIf="!AddRecalamationForm.controls['description'].valid">
+                                                      Le champs description est obligatoire
+                                                  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+  
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <p 
+                                                class="btn btn-info"
+                                                (click)="openModalListMateriel()">Selectionner le materiel</p>
+                                                <br>
+                                                <span class="text-danger" *ngIf="showErreurSelectionerMateriel==true">
+                                                    Il faut déclarer un materiel
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+  
+  
+                                    <div class="row" *ngIf="showInfo==true && infoFromModal!=null && infoFromModal != ''">
+                                      <div class="col-xs-12">
+                                          <div class="well">
+                                              <p>Classe: {{ infoFromModal.classe.nom}}</p>
+                                              <p>Materiel: {{ infoFromModal.nom}}, numero de serie: {{infoFromModal.numSerie}}</p>
+                                          </div>
+                                      </div>
+                                    </div>
+                                    
+                                    
+                                    <br>
+                                    <div class="row">
+                                        <div class="text-center">
+                                            <button type="submit" 
+                                            class="btn btn-success btn-fill btn-wd" 
+                                            [disabled]="AddRecalamationForm.invalid">Envoyer...</button>
+                                        </div>
+                                    </div>
+  
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+        <footer-cmp></footer-cmp>
+    </div>
+  </div>

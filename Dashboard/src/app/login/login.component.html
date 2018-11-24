@@ -1,0 +1,42 @@
+<div class="col-lg-8 col-md-7">
+  <div class="card">
+      <div class="header">
+          <h4 class="title">Se connecter</h4>
+      </div>
+      <div class="content">
+          <form  [formGroup]="loginForm" (ngSubmit)="tryToLogin()"> 
+              <div class="row">
+                  <div class="col-xs-12">
+                      <div class="form-group">
+                          <label>Adresse Email</label>
+                          <input type="text" 
+                          class="form-control border-input" 
+                          placeholder="Adresse email" 
+                          name="email" formControlName="email">
+                      </div>
+                  </div>
+              </div>   
+
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                      <label>Mot de passe</label>
+                      <input type="password" 
+                      class="form-control border-input" 
+                      placeholder="Mot de passe"
+                      name="password" formControlName="password">
+                  </div>
+                </div>
+              </div> 
+
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                     <input type="submit" class="btn btn-success" value="Se connecter ...">
+                  </div>
+                </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

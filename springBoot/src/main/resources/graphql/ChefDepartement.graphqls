@@ -1,0 +1,10 @@
+type ChefDepartement {
+    id: Long
+    nom: String
+    prenom: String
+    email: String
+    cin: Long
+    password: String,
+    departement: Departement,
+    reclamations: [Reclamation]
+}

@@ -1,0 +1,12 @@
+type Classe {
+    id: Long
+    nom: String
+    materiels: [Materiel]
+    departement: Departement!
+}
+
+extend type Query {
+ getAllClasses: [Classe]!
+ getClasseById(id: ID!):Classe!
+ getClassesByDepartement(id: ID!):[Classe]!
+}

@@ -1,0 +1,70 @@
+<div class="wrapper">
+  <div class="sidebar" data-background-color="white" data-active-color="danger">
+    <sidebar-cmp></sidebar-cmp>
+  </div>
+  <div class="main-panel">
+  <navbar-cmp></navbar-cmp>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form_main">
+        <h4 class="heading text-center" style="color:black;">Modifier Un Materiel</h4>
+        <div class="form">
+          <form [formGroup]="formEditMat" method="post" id="contactFrm" (ngSubmit)="onSubmitForm()">
+            <div class="form-group">
+              <label for="numSerie">numero de serie</label>
+              <input formControlName="numSerie" type="text" class="txt" placeholder=""  value="" id="numSerie"/>
+            </div>
+            <div class="form-group">
+              <label for="nom">libelle materiel</label>
+              <input  formControlName="nom" type="text" id="nom" required="" placeholder="" value="" class="txt">
+            </div>
+ 
+            <div class="form-group">
+              <label for="marque">marque</label>
+              <input formControlName="marque" type="text" id="marque" required="" placeholder="" value=""  class="txt">
+            </div>
+            <div class="form-group">
+              <label for="adresseIp">Adresse ip</label>
+              <input formControlName="adresseIp" id="adresseIp" type="text" required="required" placeholder="" value=""  class="txt">
+            </div>
+            <div class="form-group">
+              <label for="categorie">categorie</label>
+              <select formControlName="categorie" id="categorie" class="select_elem" >
+                <option value="EQUIPEMENT_RESAU">EQUIPEMENT  RESEAU</option>
+                <option value="PC">PC</option>
+                <option value="RETRO_PROJECTEUR">RETROPROJECTEUR</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="departement">departement</label>
+              <select (click)="fn1()" (change)="onChangeDep($event)" formControlName="departement" class="select_elem" id="departement">
+                <option value="-1" selected>Selectionner un departement</option>
+                <option *ngFor="let dep of departements" [value]="dep.id">{{dep.nom}}</option>
+              </select>
+                  <img id="spinnerDept" style="display: none;" height="35" width="35" src="assets/img/loading_spinner.svg"/>
+            </div>
+            <div class="form-group">
+              <label for="classe">classe</label>
+                <select (click)="onClickClass($event)"  formControlName="classe" class="select_elem"  id="classe">
+                  <option value="-1" selected>Selectionner un salle</option>
+                  <option *ngFor="let cl of classes" [value]="cl.id">{{cl.nom}}</option>
+              </select>
+              <img id="spinnerSalle" style="display: none;" height="35" width="35" src="assets/img/loading_spinner.svg"/>
+            </div>
+            <!--<textarea type="text" placeholder="" name=""  class="txt_3"></textarea>-->
+            <div class="form-group">
+              <input type="submit" value="submit" name="submit" class="txt2">
+            </div>
+            <div class="form-group">
+              <p class="text-danger">{{errorMessage}}</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+   </div> 
+  </div>
+</div>
+</div>

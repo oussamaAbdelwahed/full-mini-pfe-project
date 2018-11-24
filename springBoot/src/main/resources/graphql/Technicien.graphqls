@@ -1,0 +1,11 @@
+type Technicien  {
+    id: Long!
+    key: String
+    nom: String!
+    prenom:String!
+    email: String
+    cin: Long!
+    password: String!
+    typeTravail: String!
+    interventions: [Intervention]!
+}

@@ -1,0 +1,61 @@
+<div class="wrapper">
+  <div class="sidebar" data-background-color="white" data-active-color="danger">
+    <sidebar-cmp></sidebar-cmp>
+  </div>
+  <div class="main-panel">
+    <navbar-cmp></navbar-cmp>
+    <div class="container">
+       <div class="row">
+         <h3 style="margin:15px 0px 30px 0px;" class="text-center">créer un materiel</h3>
+          <div class="col-xs-12 col-lg-offset-4 col-lg-4 col-lg-offset-4">
+            <small>* : champs obligatoires</small>
+            <form [formGroup]="form" (ngSubmit)="onSubmitForm()">
+              <div class="form-group">
+                <label for="numSerie">numSerie *</label>
+                <input formControlName="numSerie" type="text" id="numSerie" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <label for="marque">marque * </label>
+                <input formControlName="marque" type="text" id="marque" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="nom">nom * </label>
+                <input formControlName="nom" type="text" id="nom" class="form-control"/>
+              </div> 
+              <div class="form-group">
+                <label for="categorie">categorie *</label>
+                <select formControlName="categorie" id="categorie" class="form-control">
+                    <option value="PC" selected>PC</option>  
+                    <option value="EQUIPEMENT_RESAU">EQUIPEMENT_RESAU</option>
+                    <option value="RETRO_PROJECTEUR">RETROPROJECTEUR</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="dateAchat">date d'achat</label>
+                <input (change)="onChangeDate($event)" formControlName="dateAchat" type="date" class="form-control" id="dateAchat">
+              </div>    
+              <div class="form-group">
+                <label for="adresseIp">adresse ip</label>
+                <input formControlName="adresseIp" type="text" id="adresseIp" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="departement">departement</label>
+                <select (click)="onClickDep($event)" (change)="onChangeDep($event)" formControlName="departement" id="departement" class="form-control">
+                    <option *ngFor="let dep of departements" [value]="dep.id">{{dep.nom}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="classe">classe</label>
+                <select disabled formControlName="classe" id="classe" class="form-control">
+                    <option *ngFor="let class of classes" [value]="class.id">{{class.nom}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input [disabled]="form.invalid" type="submit" value="envoyer" class="btn btn-primary"/>
+              </div>
+            </form>
+          </div>
+       </div>
+    </div>
+  </div>
+</div>

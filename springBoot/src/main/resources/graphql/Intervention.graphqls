@@ -1,0 +1,7 @@
+type Intervention {
+ id: Long!
+ dateExecution: String!
+ resultat: Boolean
+ reclamation: Reclamation!
+ technicien: Technicien!
+}
