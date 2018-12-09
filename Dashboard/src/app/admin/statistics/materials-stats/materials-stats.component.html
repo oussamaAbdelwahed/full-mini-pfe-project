@@ -1,0 +1,19 @@
+<div class="col-lg-3" id="p1">
+    <img id="loading_spinner_1" [ngStyle]="{'display':isSp1Visible ? 'visible': 'none'}" height="35" width="35" src="assets/img/loading_spinner.svg" />
+    <h5 class="text-center title-stats">Materiels Par Catégorie</h5>
+    <div class="content-stats-div">
+      <ng-container *ngFor="let stat of statsPerCategorie">
+       <strong>{{MatCatsMapper[stat.groupByColumn]}} : </strong> <small>{{stat.count}}</small><br/><br />
+      </ng-container>
+    </div>
+</div>    
+
+<div class="col-lg-3" id="p2">
+    <img id="loading_spinner_2" [ngStyle]="{'display':isSp2Visible ? 'visible': 'none'}" height="35" width="35" src="assets/img/loading_spinner.svg" />
+    <h5 class="text-center title-stats">Materiels Par Marque</h5>
+    <div class="content-stats-div">
+      <ng-container *ngFor="let stat of statsPerMarque">
+         <strong>{{stat.groupByColumn}} : </strong> <small>{{stat.count}}</small><br/><br/>
+      </ng-container>
+    </div>
+</div>

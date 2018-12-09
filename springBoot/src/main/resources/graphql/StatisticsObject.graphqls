@@ -1,0 +1,9 @@
+type StatisticsObject {
+  groupByColumn: String!
+  count:Long!
+}
+
+extend type Query {
+    getNbrMaterialsByCategorie: [StatisticsObject!]!
+    getNbrMaterialsByMarque: [StatisticsObject!]!
+}

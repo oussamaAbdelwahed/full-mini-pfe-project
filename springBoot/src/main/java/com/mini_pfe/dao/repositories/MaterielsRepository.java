@@ -1,5 +1,6 @@
 package com.mini_pfe.dao.repositories;
 
+
 import com.mini_pfe.entities.Materiel;
 import com.mini_pfe.entities.enums.Categorie;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface MaterielsRepository extends JpaRepository<Materiel, Long> {
@@ -46,7 +48,6 @@ public interface MaterielsRepository extends JpaRepository<Materiel, Long> {
     //par departement AND categorie
      List<Materiel> findByClasseDepartementIdAndCategorie(Long depId,Categorie categorie);
 
-
     //par classe AND categorie
     List<Materiel> findByClasseIdAndCategorie(Long classId, Categorie categorie);
 
@@ -61,5 +62,12 @@ public interface MaterielsRepository extends JpaRepository<Materiel, Long> {
             @Param("id") Long id
     );
 
+   @Query("SELECT new map(m.categorie,COUNT(m)) FROM Materiel m GROUP BY m.categorie")
+    List<?> getGroupedByCategorie();
+
+   @Query("SELECT new map(m.marque,COUNT(m)) FROM Materiel m GROUP BY m.marque")
+    List<?> getGroupedByMarque();
     /*END OUSSAMA WORK*/
+
+
 }

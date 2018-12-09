@@ -8,6 +8,7 @@ import { ListMaterialsComponent } from './materials/list-materials/list-material
 import { CreateMaterialComponent } from './materials/create-material/create-material.component';
 import { ListNewReclamationsComponent } from './reclamations/list-new-reclamations/list-new-reclamations.component';
 import { AffecterTechnicienComponent } from './interventions/affecter-technicien/affecter-technicien.component';
+import { MaterialsStatsComponent } from './statistics/materials-stats/materials-stats.component';
 
 @NgModule({
   imports: [CommonModule, AdminRoutingModule, SharedModule],
@@ -18,6 +19,7 @@ import { AffecterTechnicienComponent } from './interventions/affecter-technicien
     CreateMaterialComponent,
     ListNewReclamationsComponent,
     AffecterTechnicienComponent,
+    MaterialsStatsComponent,
 
   ]
 })

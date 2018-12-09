@@ -71,10 +71,6 @@ public class Materiel {
         this.classe = classe;
     }
 
-
-
-
-
     public Materiel() {}
 
     public Long getId() {

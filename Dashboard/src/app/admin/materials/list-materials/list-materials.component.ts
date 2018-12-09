@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { MaterielService } from 'src/app/services/materiel.service';
 import { Materiel } from 'src/app/models/material.model';
 import { Departement } from 'src/app/models/departement.model';
@@ -7,6 +7,7 @@ import { Classroom } from 'src/app/models/classroom.model';
 import { DepartementService } from '../../../services/departement.service';
 import { ClassroomService } from '../../../services/classroom.service';
 import { formatGraphQLParams } from 'src/app/commons/common';
+import { StatisticsService } from '../../../services/statistics.service';
 declare const $: any;
 @Component({
   selector: "app-list-materials",
@@ -27,19 +28,29 @@ export class ListMaterialsComponent implements OnInit, OnDestroy {
   private matSubSubsc: Subscription;
   private depSubSubsc: Subscription;
   private classeSubSubsc: Subscription;
+  private StatsSubSubscription: Subscription;
 
   public classesPerDep = [];
   public departements: Departement[] = [];
   public classes: Classroom[] = [];
   public viewTitle = "List des Materiels";
 
+  public statsPerCategorie: any[] = [];
+  public statsPerMarque: any[] = [];
+  public isSp1Visible: boolean = true;
+  public isSp2Visible: boolean = true;
+
   constructor(
     private matService: MaterielService,
     private depService: DepartementService,
-    private classeService: ClassroomService
+    private classeService: ClassroomService,
+    private statsService: StatisticsService
   ) {}
 
   ngOnInit() {
+    this.subscribeToStatsPerCatSubject();
+    this.subscribeToStatsPerMarqSubject();
+    this.getStatistics();
     this.subscribeToMatSub();
     this.subscribeToDepSub();
     this.subscribeToClasseSub();
@@ -94,6 +105,29 @@ export class ListMaterialsComponent implements OnInit, OnDestroy {
     );
   }
 
+  subscribeToStatsPerCatSubject() {
+    this.StatsSubSubscription = this.statsService.subjectPerCat.subscribe(
+      (emittedData: any[]) => {
+        this.statsPerCategorie = emittedData;
+        setTimeout(() => {
+          this.isSp1Visible = false;
+        }, 700);
+      }
+    );
+  }
+
+  subscribeToStatsPerMarqSubject() {
+    this.StatsSubSubscription = this.statsService.subjectPerMar.subscribe(
+      (emittedData: any[]) => {
+        this.statsPerMarque = emittedData;
+        setTimeout(() => {
+          this.isSp2Visible = false;
+        }, 700);
+        
+      }
+    );
+  }
+
   getDepartements() {
     this.countDepClick++;
     if (this.countDepClick == 1) {
@@ -103,6 +137,14 @@ export class ListMaterialsComponent implements OnInit, OnDestroy {
       const q = '{"query":"{getAllDepartements{' + parameters + '}}"}';
       this.depService.getDepartements(q);
     }
+  }
+
+  getStatistics() {
+    const parameters = formatGraphQLParams(["groupByColumn", "count"], "");
+    let q = '{"query":"{getNbrMaterialsByMarque{' + parameters + '}}"}';
+    this.statsService.getNbrMaterialsByMarque(q);
+    q = '{"query":"{getNbrMaterialsByCategorie{' + parameters + '}}"}';
+    this.statsService.getNbrMaterialsByCategorie(q);
   }
 
   getClassroomsOfDep() {
@@ -253,15 +295,13 @@ export class ListMaterialsComponent implements OnInit, OnDestroy {
 
   onDeleteFromModal() {
     const q = '{"query":"{deleteMateriel(matId: ' + this.matId + ')}"}';
-    this.matService.deleteMateriel(q).then(
-      (resolvedData: Boolean) => {
-        if (resolvedData) {
-          $("#elem_mat_" + this.matId).fadeOut(2000, function () {
-            $(this.deletedElem).attr("disabled", false);
-          });
-        }
+    this.matService.deleteMateriel(q).then((resolvedData: Boolean) => {
+      if (resolvedData) {
+        $("#elem_mat_" + this.matId).fadeOut(2000, function() {
+          $(this.deletedElem).attr("disabled", false);
+        });
       }
-    );
+    });
   }
 
   onIgnoreDelete() {

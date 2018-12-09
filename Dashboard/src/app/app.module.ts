@@ -46,6 +46,7 @@ import { DepartementService } from './services/departement.service';
 import { SharedModule } from './shared/shared-module.module';
 import { ReclamationService } from './services/reclamation.service';
 import { TechnicienService } from './services/technicien.service';
+import { StatisticsService } from './services/statistics.service';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import { TechnicienService } from './services/technicien.service';
     DepartementService,
     ReclamationService,
     TechnicienService,
+    StatisticsService,
     HttpClient],
   bootstrap: [AppComponent],
   entryComponents: [

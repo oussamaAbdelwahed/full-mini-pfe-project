@@ -34,6 +34,9 @@
         <div class="col-xs-12">
             <div class="row" style="padding-top:0px">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 text-center">
+                
+                <app-materials-stats [(statsPerCategorie)]="statsPerCategorie" [(statsPerMarque)]="statsPerMarque" [(isSp1Visible)]="isSp1Visible" [(isSp2Visible)]="isSp2Visible"></app-materials-stats>
+
                 <div class="list-group list-group-horizontal pull-right">
                 <img id="loading_spinner" style="display: none;margin-right:5px;" height="35" width="35" src="assets/img/loading_spinner.svg"/>
 
@@ -61,7 +64,7 @@
         <!--begin card-->
 <div style="margin-top: 30px;" *ngFor="let mat of materials" id="elem_mat_{{mat.id}}"  class="card col-lg-4 col-xs-offset-1 col-xs-10 col-xs-offset-1">
           <div class="card-body">
-            <h5 class="card-title text-center">{{ mat.nom}} ( {{mat.marque}} )</h5>
+            <h5 class="card-title text-center" class="title-panel-mat">{{ mat.nom}} ( {{mat.marque}} )</h5>
             <p class="card-text">description : </p>
             <table class="table table-bordered table-stripped table-condensed">
               <tr>

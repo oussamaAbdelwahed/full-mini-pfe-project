@@ -1,8 +1,7 @@
 package com.mini_pfe.project;
 
-import com.mini_pfe.dao.repositories.TechniciensRepository;
-import com.mini_pfe.entities.Technicien;
-import com.mini_pfe.entities.enums.WorkType;
+
+import com.mini_pfe.dao.repositories.MaterielsRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -11,10 +10,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.*;
+
 
 @EntityScan(basePackages = {"com.mini_pfe.entities"})
 @ComponentScan(basePackages = {

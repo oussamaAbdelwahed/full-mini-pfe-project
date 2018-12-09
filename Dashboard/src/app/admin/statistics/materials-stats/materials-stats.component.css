@@ -1,0 +1,13 @@
+#p1{
+    margin-right: 10px;
+}
+#p1, #p2 {
+    padding: 10px;
+    background-color: white;
+}
+.content-stats-div{
+    text-align: left;
+}
+.title-stats {
+    color: rgba(106, 176, 76, 1.0);
+}

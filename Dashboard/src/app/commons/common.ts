@@ -20,6 +20,17 @@ export enum WorkType {
     TECHNI_HRDW = "TECHNI_HRDW"
 }
 
+export const MatCatsMapper = {
+    EQUIPEMENT_RESAU: "Equipements Réseaux ",
+    PC : "Ordinateurs ",
+    RETRO_PROJECTEUR: "Rétroprojecteurs "
+};
+
+export const WorkTypeMapper = {
+    TECHNI_RES: "Technicien Réseau",
+    TECHNI_HRDW : "Technicien materiel électronique"
+};
+
 export function formatGraphQLParams(params :any[],query: string) {
     for(let i=0; i<params.length;i++) {
         if (typeof params[i] === 'object' && params[i]!==null) {

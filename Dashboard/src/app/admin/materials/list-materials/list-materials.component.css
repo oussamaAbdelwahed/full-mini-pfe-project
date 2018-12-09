@@ -20,3 +20,7 @@
 #modal_delete_content {
   border-radius: 0px;
 }
+.title-panel-mat {
+  color: rgba(106, 176, 76, 1.0);
+  text-align:center;
+}
